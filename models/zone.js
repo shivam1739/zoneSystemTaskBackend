@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Zone extends Model {
+  class zone extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,16 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(models.Coordinates,{
-        foreignKey: 'zoneId'
-      })
     }
   }
-  Zone.init({
-    name: DataTypes.STRING
+  zone.init({
+    name: DataTypes.STRING,
+    coordinates: DataTypes.GEOMETRY
   }, {
     sequelize,
-    modelName: 'Zone',
+    modelName: 'zone',
   });
-  return Zone;
+  return zone;
 };
